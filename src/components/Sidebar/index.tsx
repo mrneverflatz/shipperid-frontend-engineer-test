@@ -20,6 +20,7 @@ const useStyles = createUseStyles(
         backgroundColor: "#ffffff",
         minHeight: "100vh",
         position: "fixed",
+        zIndex: 9,
         top: 0,
         "& ul": {
           "& li": {},

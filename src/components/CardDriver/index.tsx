@@ -41,14 +41,24 @@ const useStyles = createUseStyles({
       },
     },
   },
+  cardRowDetails: (sm: boolean) => ({
+    display: sm ? "flex" : "",
+  }),
   cardRowMore: (sm: boolean) => ({
     display: sm ? "none" : "block",
+  }),
+  cardRowThumbnail: (sm: boolean) => ({
+    marginBottom: 16,
+    "& .icon": {
+      width: sm ? 120 : 44,
+      height: sm ? 120 : 44,
+    },
   }),
   cardRow: {
     paddingLeft: "1rem",
     paddingRight: "1rem",
     "& h6": {
-      margin: 0,
+      margin: "0 0 8px",
       fontSize: "1rem",
       wordBreak: "break-all",
     },
@@ -58,7 +68,7 @@ const useStyles = createUseStyles({
     },
     "& .icon": {
       borderRadius: 80,
-      display: "inline-flex",
+      display: "flex",
       overflow: "hidden",
       "& svg": {
         fill: colors.grey,
@@ -82,34 +92,45 @@ function Sidebar({ data }: Props) {
           <DotsThree size={24} />
         </span>
       </div>
-      <div className={[classes.cardRow].join(" ")}>
-        <span className="icon">
-          {data.picture.thumbnail ? (
-            <Image src={data.picture.thumbnail} width={40} height={40} />
-          ) : (
-            <UserCircle size={40} weight="fill" />
-          )}
-        </span>
-      </div>
-      <div className={[classes.cardRow].join(" ")}>
-        <span className="">Nama Driver</span>
-        <h6 className="">
-          {data.name.first}, {data.name.last}
-        </h6>
-      </div>
-      <div className={[classes.cardRow].join(" ")}>
-        <span className="">Telepon</span>
-        <h6 className="">{data.phone}</h6>
-      </div>
-      <div className={[classes.cardRow, classes.cardRowMore].join(" ")}>
-        <span className="">Email</span>
-        <h6 className="">
-          <a href={`mailto:${data.email}`}>{data.email}</a>
-        </h6>
-      </div>
-      <div className={[classes.cardRow, classes.cardRowMore].join(" ")}>
-        <span className="">Tanggal Lahir</span>
-        <h6 className="">{format(new Date(data.dob.date), "dd-MM-yyyy")}</h6>
+      <div className={classes.cardRowDetails}>
+        <div className={[classes.cardRow, classes.cardRowThumbnail].join(" ")}>
+          <span className="icon">
+            {data.picture.thumbnail ? (
+              <Image
+                src={data.picture.thumbnail}
+                width={sm ? 120 : 44}
+                height={sm ? 120 : 44}
+              />
+            ) : (
+              <UserCircle size={sm ? 120 : 44} weight="fill" />
+            )}
+          </span>
+        </div>
+
+        <div className="">
+          <div className={[classes.cardRow].join(" ")}>
+            <span className="">Nama Driver</span>
+            <h6 className="">
+              {data.name.first}, {data.name.last}
+            </h6>
+          </div>
+          <div className={[classes.cardRow].join(" ")}>
+            <span className="">Telepon</span>
+            <h6 className="">{data.phone}</h6>
+          </div>
+          <div className={[classes.cardRow, classes.cardRowMore].join(" ")}>
+            <span className="">Email</span>
+            <h6 className="">
+              <a href={`mailto:${data.email}`}>{data.email}</a>
+            </h6>
+          </div>
+          <div className={[classes.cardRow, classes.cardRowMore].join(" ")}>
+            <span className="">Tanggal Lahir</span>
+            <h6 className="">
+              {format(new Date(data.dob.date), "dd-MM-yyyy")}
+            </h6>
+          </div>
+        </div>
       </div>
     </div>
   );

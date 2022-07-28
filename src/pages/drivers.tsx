@@ -11,14 +11,7 @@ import CardDriver from "components/CardDriver";
 
 import colors from "lib/const/themes/colors";
 import { CaretLeft, CaretRight, MagnifyingGlass, Plus } from "phosphor-react";
-import React, {
-  ChangeEventHandler,
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-  useCallback,
-  useEffect,
-  useRef,
-} from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 import useMediaQuery from "lib/helpers/useMediaQuery";
 
