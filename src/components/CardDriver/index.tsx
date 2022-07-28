@@ -97,7 +97,7 @@ function Sidebar({ data }: Props) {
           <span className="icon">
             {data.picture.thumbnail ? (
               <Image
-                src={data.picture.thumbnail}
+                src={sm ? data.picture.medium : data.picture.thumbnail}
                 width={sm ? 120 : 44}
                 height={sm ? 120 : 44}
               />
